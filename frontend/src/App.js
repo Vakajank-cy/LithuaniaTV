@@ -11,6 +11,32 @@ const App = () => {
   const videoRef = useRef(null);
 
   const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001';
+  const geometryDashInfo = {
+    title: 'Geometry Dash – žaidimo aprašymas',
+    intro: 'Geometry Dash – tai greito tempo, ritmu paremtas platforminis žaidimas, sukurtas švedų kūrėjo Robert Topala (RobTop Games). Pirmą kartą pasirodęs 2013 m., jis greitai išpopuliarėjo dėl savo paprastos, bet iššūkių kupinos mechanikos.',
+    gameplay:
+      'Žaidime žaidėjas valdo mažą kvadratą ar kitą atrakinamą figūrą, kuri automatiškai juda į priekį. Tikslas – šokinėti, skristi ir išvengti kliūčių sinchronizuojant veiksmus su muzikos ritmu. Kiekvienas lygis turi unikalų garso takelį, o kliūtys išdėstytos taip, kad atitiktų muzikos tempą.',
+    features: [
+      {
+        label: 'Ritmo sinchronizacija',
+        description: 'Kliūtys ir judesiai dera su muzika, todėl reikia įsiklausyti į ritmą.',
+      },
+      {
+        label: 'Kūrimo režimas',
+        description: 'Galimybė kurti ir dalintis savo lygiais, taip plečiant bendruomenės kūrybą.',
+      },
+      {
+        label: 'Atrakinami personažai ir spalvos',
+        description: 'Personalizacija, leidžianti išsiskirti savo stiliumi.',
+      },
+      {
+        label: 'Didelis sudėtingumas',
+        description: 'Reikalauja greitos reakcijos, atminties ir nuolatinės praktikos.',
+      },
+    ],
+    highlight:
+      'Žaidimas garsėja tuo, kad net ir trumpi lygiai gali būti labai sunkūs, todėl kiekvienas įveiktas etapas suteikia stiprų pasiekimo jausmą.',
+  };
 
   useEffect(() => {
     const checkMobile = () => {
@@ -230,6 +256,39 @@ const App = () => {
       </div>
 
       {/* Footer */}
+      <section className="container mx-auto px-4 pb-10">
+        <div className="bg-white/10 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-white shadow-xl">
+          <div className="flex items-start justify-between flex-wrap gap-4">
+            <div>
+              <h2 className="text-2xl font-bold mb-2">{geometryDashInfo.title}</h2>
+              <p className="text-white/80 leading-relaxed">{geometryDashInfo.intro}</p>
+            </div>
+            <span className="px-4 py-2 rounded-full bg-purple-500/30 text-purple-100 text-sm font-semibold">🎮 Žaidimų kampelis</span>
+          </div>
+
+          <div className="mt-4 grid gap-4 md:grid-cols-5">
+            <div className="md:col-span-3 space-y-3">
+              <p className="text-white/80 leading-relaxed">{geometryDashInfo.gameplay}</p>
+              <p className="text-white/90 font-medium">{geometryDashInfo.highlight}</p>
+            </div>
+            <div className="md:col-span-2 bg-white/5 border border-white/10 rounded-xl p-4 space-y-3">
+              <h3 className="text-lg font-semibold flex items-center gap-2">
+                <span>⭐</span>
+                Pagrindinės savybės
+              </h3>
+              <ul className="space-y-3">
+                {geometryDashInfo.features.map((feature) => (
+                  <li key={feature.label} className="bg-black/20 rounded-lg p-3 border border-white/10">
+                    <p className="font-semibold">{feature.label}</p>
+                    <p className="text-white/70 text-sm">{feature.description}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <footer className="bg-black/20 backdrop-blur-sm border-t border-white/10 mt-12">
         <div className="container mx-auto px-4 py-6">
           <div className="text-center text-white/60 text-sm">
